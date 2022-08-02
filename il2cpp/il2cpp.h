@@ -41,13 +41,11 @@ public:
 class il2cpp
 {
 public:
-	
-
-	static inline Il2CppClass* FindClass(const char* name, const char* Assemblyname = "Assembly-CSharp") {
+	static inline Il2CppClass* FindClass(const char* name, const char* ModuleNameSpace = "Assembly-CSharp") {
 		auto domain = il2cppAPI::il2cpp_domain_get();
-		auto assembly_namespace = il2cppAPI::il2cpp_domain_assembly_open(domain, Assemblyname);
-		if (!assembly_namespace) return nullptr;
-		auto image = il2cppAPI::il2cpp_assembly_get_image(assembly_namespace);
+		auto module_namespace = il2cppAPI::il2cpp_domain_assembly_open(domain, ModuleNameSpace);
+		if (!module_namespace) return nullptr;
+		auto image = il2cppAPI::il2cpp_assembly_get_image(module_namespace);
 		auto class_count = il2cppAPI::il2cpp_image_get_class_count(image);
 		for (int i = 0; i < class_count; i++)
 		{
@@ -59,5 +57,4 @@ public:
 			}
 		}
 	}
-
 };
