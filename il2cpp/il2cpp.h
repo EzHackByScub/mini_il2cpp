@@ -31,7 +31,7 @@ public:
 		return method ? method->methodaddr : nullptr;
 	}
 	void* StaticFields() {
-		return (void*)(*(int*)((int)this + 0x5C)); // 0x5c - for 32 bit in 64 bit its 0xb8
+		return *(void**)((int)this + 0x5C); // 0x5c - for 32 bit in 64 bit its 0xb8
 	}
 };
 class il2cpp
