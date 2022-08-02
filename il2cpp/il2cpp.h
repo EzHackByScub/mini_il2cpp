@@ -8,7 +8,7 @@ class Il2CppImage;
 class MethodInfo
 {
 public:
-	void* methodaddr;
+	void* pMethod;
 };
 class Il2CppClass;
 namespace il2cppAPI
@@ -29,8 +29,8 @@ public:
 		return il2cppAPI::il2cpp_class_get_name(this);
 	}
 	void* FindMethod(const char* name, int argsCount) {
-		auto method = il2cppAPI::il2cpp_class_get_method_from_name(this, name, argsCount);
-		return method ? method->methodaddr : nullptr;
+		auto method_info = il2cppAPI::il2cpp_class_get_method_from_name(this, name, argsCount);
+		return method_info ? method_info->pMethod : nullptr;
 	}
 #if defined(_WIN64)
 	OFFSET(void*, StaticFields, 0xB8)
