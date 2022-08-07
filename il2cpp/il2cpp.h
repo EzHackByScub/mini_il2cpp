@@ -11,17 +11,18 @@ public:
 	void* pMethod;
 };
 class Il2CppClass;
-namespace il2cppAPI
+class il2cppAPI
 {
-	auto GameAssembly = GetModuleHandleA("GameAssembly.dll");
-	auto il2cpp_domain_get = reinterpret_cast<Il2CppDomain * (__cdecl*)()>(GetProcAddress(GameAssembly, "il2cpp_domain_get"));
-	auto il2cpp_domain_assembly_open = reinterpret_cast<Il2CppAssembly * (__cdecl*)(Il2CppDomain * domain, const char* name)>(GetProcAddress(GameAssembly, "il2cpp_domain_assembly_open"));
-	auto il2cpp_assembly_get_image = reinterpret_cast<Il2CppImage * (__cdecl*)(Il2CppAssembly * assembly)>(GetProcAddress(GameAssembly, "il2cpp_assembly_get_image"));
-	auto il2cpp_image_get_class_count = reinterpret_cast<int(__cdecl*)(Il2CppImage * image)>(GetProcAddress(GameAssembly, "il2cpp_image_get_class_count"));
-	auto il2cpp_image_get_class = reinterpret_cast<Il2CppClass * (__cdecl*)(Il2CppImage * image, int index)>(GetProcAddress(GameAssembly, "il2cpp_image_get_class"));
-	auto il2cpp_class_get_name = reinterpret_cast<const char* (__cdecl*)(Il2CppClass * klass)>(GetProcAddress(GameAssembly, "il2cpp_class_get_name"));
-	auto il2cpp_class_get_method_from_name = reinterpret_cast<MethodInfo * (__cdecl*)(Il2CppClass * klass, const char* name, int argsCount)>(GetProcAddress(GameAssembly, "il2cpp_class_get_method_from_name"));
-}
+public:
+	static inline HMODULE GameAssembly = (HMODULE)Utils::get_module_base(L"GameAssembly.dll");
+	static inline auto il2cpp_domain_get = reinterpret_cast<Il2CppDomain * (__cdecl*)()>(GetProcAddress(GameAssembly, "il2cpp_domain_get"));
+	static inline auto il2cpp_domain_assembly_open = reinterpret_cast<Il2CppAssembly * (__cdecl*)(Il2CppDomain * domain, const char* name)>(GetProcAddress(GameAssembly, "il2cpp_domain_assembly_open"));
+	static inline auto il2cpp_assembly_get_image = reinterpret_cast<Il2CppImage * (__cdecl*)(Il2CppAssembly * assembly)>(GetProcAddress(GameAssembly, "il2cpp_assembly_get_image"));
+	static inline auto il2cpp_image_get_class_count = reinterpret_cast<int(__cdecl*)(Il2CppImage * image)>(GetProcAddress(GameAssembly, "il2cpp_image_get_class_count"));
+	static inline auto il2cpp_image_get_class = reinterpret_cast<Il2CppClass * (__cdecl*)(Il2CppImage * image, int index)>(GetProcAddress(GameAssembly, "il2cpp_image_get_class"));
+	static inline auto il2cpp_class_get_name = reinterpret_cast<const char* (__cdecl*)(Il2CppClass * klass)>(GetProcAddress(GameAssembly, "il2cpp_class_get_name"));
+	static inline auto il2cpp_class_get_method_from_name = reinterpret_cast<MethodInfo * (__cdecl*)(Il2CppClass * klass, const char* name, int argsCount)>(GetProcAddress(GameAssembly, "il2cpp_class_get_method_from_name"));
+};
 class Il2CppClass
 {
 public:
