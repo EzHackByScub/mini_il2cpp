@@ -14,7 +14,7 @@ class Il2CppClass;
 class il2cppAPI
 {
 public:
-	static inline HMODULE GameAssembly = GetModuleHandleA(L"GameAssembly.dll");
+	static inline HMODULE GameAssembly = GetModuleHandleA("GameAssembly.dll");
 	static inline auto il2cpp_domain_get = reinterpret_cast<Il2CppDomain * (__cdecl*)()>(GetProcAddress(GameAssembly, "il2cpp_domain_get"));
 	static inline auto il2cpp_domain_assembly_open = reinterpret_cast<Il2CppAssembly * (__cdecl*)(Il2CppDomain * domain, const char* name)>(GetProcAddress(GameAssembly, "il2cpp_domain_assembly_open"));
 	static inline auto il2cpp_assembly_get_image = reinterpret_cast<Il2CppImage * (__cdecl*)(Il2CppAssembly * assembly)>(GetProcAddress(GameAssembly, "il2cpp_assembly_get_image"));
