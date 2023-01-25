@@ -17,7 +17,7 @@ auto get_main = Camera->FindMethod("get_main",0/*how many arguments in your meth
 auto NetworkManagerStaticFields = NetworkManager->StaticFields() // get class static fields
 
 ```
-
+P.S: **Please Change C++ 14 to C++ 20, because it's false positive errors due to old cpp version**
 
 ## Screenshots
 
